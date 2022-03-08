@@ -40,11 +40,11 @@ Sub MultipleYearStockAnalysis()
     ws.Range("K1").Value = "% Change"
     ws.Range("L1").Value = "Total Stock Volume"
     ' Creating Analysis Table and labels for High/Low Stats
-    ws.Range("N2").Value = "Greatest % Increase"
-    ws.Range("N3").Value = "Greatest % Decrease"
-    ws.Range("N4").Value = "Greatest Total Volume"
-    ws.Range("O1").Value = "Ticker"
-    ws.Range("P1").Value = "Value"
+    ws.Range("O2").Value = "Greatest % Increase"
+    ws.Range("O3").Value = "Greatest % Decrease"
+    ws.Range("O4").Value = "Greatest Total Volume"
+    ws.Range("P1").Value = "Ticker"
+    ws.Range("Q1").Value = "Value"
     
     'Instantiating data for the first ticker
     open = range("C2")
@@ -76,7 +76,18 @@ Sub MultipleYearStockAnalysis()
                 cells(row_index, 10).interior.colorindex = 9
             end if
 
+            cells(row_index, 11).numberformat = "0.00%"
+            If (open <> 0) then
+                cellscells(row_index, 11).value = (close - open) / open
+            else
+                cells_row_index, 11).value = 0
+            end if
+
             cells(row_index, 12).value = total_stockVol
+
+            cells(row_index, 12).value = total_stockVol
+
+
     
 End Sub
 
