@@ -18,15 +18,21 @@ Sub MultipleYearStockAnalysis()
     dim ws As Worksheet
     ' Declaring variables for columns in the worksheet
     dim ticker as string
+    dim newTicker as string
+    dim rowIndex as double
+    dim last_row as double
     dim open as double 
     dim close as double
     dim yearly_change as double
+    dim volume as double
     dim total_stockVol as double
     dim percent_change as double
     dim starting_point as integer
-
-    ' Looping through the worksheets
-    For Each ws In Worksheets
+    dim percent_min as double
+    dim percent_max as double
+    dim max_volume as double
+    dim tickerPMin as string
+    dim tickerPMax as string
     
     ' Creating Analysis Table headers
     ws.Range("I1").Value = "Ticker"
@@ -40,9 +46,25 @@ Sub MultipleYearStockAnalysis()
     ws.Range("O1").Value = "Ticker"
     ws.Range("P1").Value = "Value"
     
-    ' Declaring row variable
+    'Instantiating data for the first ticker
+    open = range("C2")
+    percent_min = 100
+    percent_max = -100
+    total_stockVol = -1
 
-    last_row = cells(rows.count)
+    ' Iterating through the data
+    row_index = 2
+    total_stockVol = 0
+    last_row = cells(rows.count, 1).end(x1up).row
+    
+    for i = 2 to last_row
+        ticker = cells(i, 1).Value
+        newTicker = cells(i + 1, 1).Value
+        total_stockVol = cells(i, 7).Value
+        total_stockVol = total_stockVol + volume
+
+
+
     
     
 End Sub
