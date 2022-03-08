@@ -63,9 +63,20 @@ Sub MultipleYearStockAnalysis()
         total_stockVol = cells(i, 7).Value
         total_stockVol = total_stockVol + volume
 
+        ' Adding new ticker values and setting volum back to 0 when a new ticker is found
+        if (ticker <> newTicker) then
+            close = cells(i, 6).value
+            cells(row_index, 9).value = ticker
+            cells(row_index, 10).value = close - open
+            cells(row_index, 10).numberformat = "0.0000000000"
 
+            if (cells(row_index, 10).value >=0) Then
+                cells(row_index, 10).interior.colorindex = 10
+            else
+                cells(row_index, 10).interior.colorindex = 9
+            end if
 
-    
+            cells(row_index, 12).value = total_stockVol
     
 End Sub
 
